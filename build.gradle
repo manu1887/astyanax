@@ -127,6 +127,10 @@ project(':astyanax-cassandra') {
         compile "io.netty:netty:$nettyVersion"   
         compile  project(':astyanax-core')
     }
+    bundle {
+      instruction 'Export-Package', 'com.google.common.*,com.netflix.astyanax.annotations,com.netflix.astyanax.clock,com.netflix.astyanax.connectionpool,com.netflix.astyanax.connectionpool.exceptions,com.netflix.astyanax.connectionpool.impl,com.netflix.astyanax.retry'
+      instruction 'Import-Package', '!javax.inject.*'
+    }
 }
 
 project(':astyanax-recipes') {
