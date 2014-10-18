@@ -67,15 +67,19 @@ project(':astyanax') {
 }
 
 project(':astyanax-core') {
-    apply plugin: 'osgi'
+    apply plugin: 'bundle'
     apply plugin: 'java'
     dependencies {
         testCompile "junit:junit:$junitVersion"
     }
+    bundle {
+      instruction 'Export-Package', 'com.eaio.*,com.google.common.*,javax.management.*,org.apache.commons.lang.*,org.cliffc.high_scale_lib.*,org.joda.time.*'
+      instruction 'Import-Package', '!javax.inject.*'
+    }
 }
 
 project(':astyanax-thrift') {
-    apply plugin: 'osgi'
+    apply plugin: 'bundle'
     apply plugin: 'java'
     dependencies {
         compile  project(':astyanax-core')
@@ -86,7 +90,7 @@ project(':astyanax-thrift') {
 }
 
 project(':astyanax-cql') {
-    apply plugin: 'osgi'
+    apply plugin: 'bundle'
     apply plugin: 'java'
     dependencies {
         compile  project(':astyanax-core')
@@ -100,7 +104,7 @@ project(':astyanax-cql') {
 }
 
 project(':astyanax-queue') {
-    apply plugin: 'osgi'
+    apply plugin: 'bundle'
     apply plugin: 'java'
     dependencies {
         compile  project(':astyanax-core')
@@ -111,7 +115,7 @@ project(':astyanax-queue') {
 }
 
 project(':astyanax-cassandra') {
-    apply plugin: 'osgi'
+    apply plugin: 'bundle'
     apply plugin: 'java'
     dependencies {
         compile "org.apache.cassandra:cassandra-all:$cassandraVersion"
@@ -164,7 +168,7 @@ project(':astyanax-contrib') {
 }
 
 project(':astyanax-test') {
-    apply plugin: 'osgi'
+    apply plugin: 'bundle'
     apply plugin: 'java'
     dependencies {
         compile  project(':astyanax-core')
