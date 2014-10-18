@@ -87,6 +87,10 @@ project(':astyanax-thrift') {
         compile "org.apache.cassandra:cassandra-thrift:$cassandraVersion"
         compile "org.apache.thrift:libthrift:$thriftVersion"
     }
+    bundle {
+      instruction 'Export-Package', 'com.google.common.*,com.netflix.astyanax,com.netflix.astyanax.clock,com.netflix.astyanax.connectionpool,com.netflix.astyanax.connectionpool.exceptions,com.netflix.astyanax.connectionpool.impl,com.netflix.astyanax.cql,com.netflix.astyanax.ddl,com.netflix.astyanax.ddl.impl,com.netflix.astyanax.model,com.netflix.astyanax.partitioner,com.netflix.astyanax.query,com.netflix.astyanax.retry,com.netflix.astyanax.serializers,com.netflix.astyanax.shallows,com.netflix.astyanax.annotations,com.netflix.astyanax.impl,com.netflix.astyanax.util,com.eaio.*'
+      instruction 'Import-Package', '!com.netflix.astyanax.test'
+    }
 }
 
 project(':astyanax-cql') {
