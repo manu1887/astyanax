@@ -143,6 +143,7 @@ project(':astyanax-recipes') {
 }
 
 project(':astyanax-entity-mapper') {
+    apply plugin: 'bundle'
     apply plugin: 'java'
     dependencies {
         compile  project(':astyanax-core')
@@ -151,6 +152,10 @@ project(':astyanax-entity-mapper') {
     	compile  "javax.persistence:persistence-api:$jpaVersion"
         testCompile project(':astyanax-thrift')
         testCompile "junit:junit:$junitVersion"
+    }
+    bundle {
+      instruction 'Export-Package', 'com.google.common.*,com.netflix.astyanax,com.netflix.astyanax.connectionpool,com.netflix.astyanax.connectionpool.exceptions,com.netflix.astyanax.connectionpool.impl,com.netflix.astyanax.cql,com.netflix.astyanax.ddl,com.netflix.astyanax.impl,com.netflix.astyanax.clock,com.netflix.astyanax.model,com.netflix.astyanax.partitioner,com.netflix.astyanax.query,com.netflix.astyanax.recipes.reader,com.netflix.astyanax.retry,com.netflix.astyanax.serializers,com.netflix.astyanax.annotations,com.netflix.astyanax.shallows,com.netflix.astyanax.util,com.eaio.*,com.netflix.astyanax.entitystore'
+      instruction 'Import-Package', '!com.netflix.astyanax.test'
     }
 }
 
